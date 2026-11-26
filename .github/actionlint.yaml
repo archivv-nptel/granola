@@ -1,0 +1,4 @@
+# Retained for the upstream-only benchmark workflows.
+self-hosted-runner:
+  labels:
+    - benchmarks

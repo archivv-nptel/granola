@@ -1,0 +1,15 @@
+# Set update schedule for GitHub Actions only
+
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    # Keep the standalone snapshot on a single branch.
+    open-pull-requests-limit: 0
+    schedule:
+      interval: "monthly"
+    cooldown:
+      default-days: 7
+    labels:
+      - 'dependencies'
+    rebase-strategy: disabled
