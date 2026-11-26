@@ -1,0 +1,14 @@
+services:
+  meilisearch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MEILI_NO_ANALYTICS: "true"
+    ports:
+      - "127.0.0.1:7700:7700"
+    volumes:
+      - meili_data:/meili_data
+
+volumes:
+  meili_data:

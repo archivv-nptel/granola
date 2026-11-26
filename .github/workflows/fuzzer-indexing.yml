@@ -1,0 +1,25 @@
+name: Run the indexing fuzzer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  CARGO_BUILD_JOBS: 2
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  fuzz:
+    if: github.repository == 'meilisearch/meilisearch' || github.event_name == 'workflow_dispatch'
+    name: Setup the action
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Run benchmarks
+      - name: Run the fuzzer
+        run: |
+          cargo run --release --bin fuzz-indexing
